@@ -2,8 +2,8 @@ import java.util.regex.*;
 
 class SyslogParser {
     public static void main(String[] args) {
-	String txt = "Aug 12 12:27:15 hidingIT snapd[4646]: snap \"gnome-calculator\": snap has no updates available";
-    	String re1 = "((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Sept|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?))"; // Month
+        String txt = "Aug 12 12:27:15 hidingIT snapd[4646]: snap \"gnome-calculator\": snap has no updates available";
+        String re1 = "((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Sept|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?))"; // Month
         String re2 = ".*?"; // Non-greedy match on filler
         String re3 = "((?:(?:[0-2]?\\d{1})|(?:[3][01]{1})))(?![\\d])";	// Day
         String re4 = ".*?";	// Non-greedy match on filler
