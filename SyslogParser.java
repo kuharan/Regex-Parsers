@@ -2,6 +2,14 @@ import java.util.regex.*;
 
 class SyslogParser {
     public static void main(String[] args) {
+	String month;
+        String day;
+        String time;
+        String hostname;
+        String pname;
+        String pid;
+        String priority;
+        String msg;
         String txt = "Aug 12 12:27:15 hidingIT snapd[4646]: snap \"gnome-calculator\": snap has no updates available";
         String re1 = "((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Sept|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?))"; // Month
         String re2 = ".*?"; // Non-greedy match on filler
@@ -21,37 +29,37 @@ class SyslogParser {
         Pattern p = Pattern.compile(re1 + re2 + re3 + re4 + re5 + re6 + re7 + re8 + re9 + re10 + re11 + re12 + re13 + re14, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
         Matcher m = p.matcher(txt);
         if (m.find()) {
-            String month = m.group(1);
-            String day = m.group(2);
-            String time = m.group(3);
-            String hostname = m.group(4);
-            String pname = m.group(5);
-            String pid = m.group(6);
-            String priority = m.group(7);
-            String msg = m.group(8);
+            month = m.group(1);
+            day = m.group(2);
+            time = m.group(3);
+            hostname = m.group(4);
+            pname = m.group(5);
+            pid = m.group(6);
+            priority = m.group(7);
+            msg = m.group(8);
             System.out.print("(" + month.toString() + ")" + "(" + day.toString() + ")" + "(" + time.toString() + ")" + "(" + hostname.toString() + ")" + "(" + pname.toString() + ")" + "(" + pid.toString() + ")" + "(" + priority.toString() + ")" + "(" + msg.toString() + ")" + "\n");
         } else {
             p = Pattern.compile(re1 + re2 + re3 + re4 + re5 + re6 + re7 + re8 + re9 + re10 + re11 + re13 + re14, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
             m = p.matcher(txt);
             if (m.find()) {
-                String month = m.group(1);
-                String day = m.group(2);
-                String time = m.group(3);
-                String hostname = m.group(4);
-                String pname = m.group(5);
-                String pid = m.group(6);
-                String msg = m.group(7);
+                month = m.group(1);
+                day = m.group(2);
+                time = m.group(3);
+                hostname = m.group(4);
+                pname = m.group(5);
+                pid = m.group(6);
+                msg = m.group(7);
                 System.out.print("(" + month.toString() + ")" + "(" + day.toString() + ")" + "(" + time.toString() + ")" + "(" + hostname.toString() + ")" + "(" + pname.toString() + ")" + "(" + pid.toString() + ")" + "(" + msg.toString() + ")" + "\n");
             } else {
                 p = Pattern.compile(re1 + re2 + re3 + re4 + re5 + re6 + re7 + re8 + re9 + re13 + re14, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
                 m = p.matcher(txt);
                 if (m.find()) {
-                    String month = m.group(1);
-                    String day = m.group(2);
-                    String time = m.group(3);
-                    String hostname = m.group(4);
-                    String pname = m.group(5);
-                    String msg = m.group(6);
+                    month = m.group(1);
+                    day = m.group(2);
+                    time = m.group(3);
+                    hostname = m.group(4);
+                    pname = m.group(5);
+                    msg = m.group(6);
                     System.out.print("(" + month.toString() + ")" + "(" + day.toString() + ")" + "(" + time.toString() + ")" + "(" + hostname.toString() + ")" + "(" + pname.toString() + ")" + "(" + msg.toString() + ")" + "\n");
                 }
             }
